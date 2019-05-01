@@ -5,7 +5,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
+
 public class Main {
+
+
+
 
     public static void main(String[] args) {
 
@@ -29,13 +33,21 @@ public class Main {
             to = new PrintWriter(sock.getOutputStream(),
                     true);
 
+//            while (true) {
+//                System.out.println("Waiting...");
+//                String response = from.readLine();
+//                System.out.println("them: " + response);
+//                System.out.println("me: ");
+//                String s = kbd.nextLine();
+//                to.println(s);
+//            }
+
+            //Requesting a quote
             while (true) {
-                System.out.println("Waiting...");
-                String response = from.readLine();
-                System.out.println("them: " + response);
-                System.out.println("me: ");
-                String s = kbd.nextLine();
-                to.println(s);
+                System.out.println("Press <Enter> to request a quote");
+                kbd.nextLine();
+                System.out.println("Requesting quote");
+
             }
         } catch (IOException e) {
             e.printStackTrace();
