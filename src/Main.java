@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -47,6 +48,15 @@ public class Main {
                 System.out.println("Press <Enter> to request a quote");
                 kbd.nextLine();
                 System.out.println("Requesting quote");
+                String request = "Received a quote request from client";
+                to.println(request);
+
+                int first = Integer.parseInt(from.readLine());
+                int second = Integer.parseInt(from.readLine());
+                System.out.println(first);
+
+                System.out.println(second);
+
 
             }
         } catch (IOException e) {
