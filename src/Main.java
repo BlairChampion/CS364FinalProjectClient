@@ -9,7 +9,14 @@ import java.util.Scanner;
 
 public class Main {
 
-
+    private static int getFactor(int a){
+        for (int i = 2; i < a; i++ ) {
+            if (a%i == 0){
+                return i;
+            }
+        }
+        return 0;
+    }
 
 
     public static void main(String[] args) {
@@ -53,9 +60,16 @@ public class Main {
 
                 int first = Integer.parseInt(from.readLine());
                 int second = Integer.parseInt(from.readLine());
-                System.out.println(first);
+                System.out.println("Finding factors of " + first + ", " + second);
+                int firstFactor = getFactor(first);
+                int secondFactor = getFactor(second);
+                System.out.println("Found factors " + firstFactor + ", " + secondFactor);
+                System.out.println("Sending factors to server");
+                to.println(firstFactor);
+                to.println(secondFactor);
+                System.out.println("Recieved \"" + from.readLine() + "\" from server");
+                System.out.println("Received quote: \"" + from.readLine() + "\"");
 
-                System.out.println(second);
 
 
             }
