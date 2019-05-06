@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
 
     private static int getFactor(int a){
-        for (int i = 2; i < a; i++ ) {
+        for (int i = 2; i <= (Math.sqrt((double) a)); i++ ) {
             if (a%i == 0){
                 return i;
             }
