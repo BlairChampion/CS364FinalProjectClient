@@ -8,15 +8,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static int getFactor(int a){
-        for (int i = 2; i <= (Math.sqrt((double) a)); i++ ) {
+    private static int getFactor(Long a){
+        for (int i = 2; i <= (Math.sqrt(a)); i++ ) {
             if (a%i == 0){
                 return i;
             }
         }
         return 0;
     }
-
 
     public static void main(String[] args) {
 
@@ -48,11 +47,27 @@ public class Main {
                 String request = "Received a quote request from client";
                 to.println(request);
 
-                int first = Integer.parseInt(from.readLine());
-                int second = Integer.parseInt(from.readLine());
+                Long first = Long.parseLong(from.readLine());
+                Long second = Long.parseLong(from.readLine());
                 System.out.println("Finding factors of " + first + ", " + second);
-                int firstFactor = getFactor(first);
-                int secondFactor = getFactor(second);
+
+                Worker work1 = new Worker(first);
+                Worker work2 = new Worker(second);
+                Thread t1 = new Thread(work1);
+                Thread t2 = new Thread(work2);
+                t1.start();
+                t2.start();
+
+                try {
+                    t1.join();  // wait for t1 to finish
+                    t2.join();  // wait for t2 to finish
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    return;
+                }
+
+                long firstFactor = work1.getResult();
+                long secondFactor = work2.getResult();
                 System.out.println("Found factors " + firstFactor + ", " + secondFactor);
                 System.out.println("Sending factors to server");
                 to.println(firstFactor);
