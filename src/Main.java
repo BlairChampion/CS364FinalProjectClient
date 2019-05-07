@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static int getFactor(int a){
-        for (int i = 2; i <= (Math.sqrt((double) a)); i++ ) {
+    private static int getFactor(Long a){
+        for (int i = 2; i <= (Math.sqrt(a)); i++ ) {
             if (a%i == 0){
                 return i;
             }
@@ -48,8 +48,8 @@ public class Main {
                 String request = "Received a quote request from client";
                 to.println(request);
 
-                int first = Integer.parseInt(from.readLine());
-                int second = Integer.parseInt(from.readLine());
+                Long first = Long.parseLong(from.readLine());
+                Long second = Long.parseLong(from.readLine());
                 System.out.println("Finding factors of " + first + ", " + second);
                 int firstFactor = getFactor(first);
                 int secondFactor = getFactor(second);
