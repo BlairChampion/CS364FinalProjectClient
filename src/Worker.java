@@ -25,7 +25,10 @@ public class Worker implements Runnable{
 
     @Override
     public void run() {
+        System.out.println("Worker Start");
         this.result = getFactor(factor);
+        System.out.println("Worker Done");
+
     }
 
 }
